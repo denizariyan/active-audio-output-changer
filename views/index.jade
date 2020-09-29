@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  div
+    form(action='/done' method="post")
+        label(for='options') Devices 
+        select(name='dropDown', id='')
+            each device in Devices
+                option=device
+            input(type='submit', value='Submit')
