@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const { spawn } = require("child_process");
+var exec = require("child_process").exec;
+var path = require('path');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -7,9 +10,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/" , function(req, res, next){
-  response.render('done',{
-      selected: request.body.dropDown
+  res.render('done',{
+      output: `Output set as: ${req.body.dropDown}`
   })
+  var toSet = parseInt(req.body.dropDown)+1
+  var relPath = path.join(__dirname, '..', 'external', 'EndPointController.exe ');
+  exec(relPath + toSet);
 })
 
 module.exports = router;
