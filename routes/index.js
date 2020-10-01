@@ -1,17 +1,14 @@
 var express = require('express');
 var router = express.Router();
-const { spawn } = require("child_process");
 var exec = require("child_process").exec;
 var path = require('path');
-let csvToJson = require('convert-csv-to-json');
 var fs = require('fs')
+
 var linesExceptFirst = "";
+var fileInputName = 'out.csv'; 
 
-let fileInputName = 'out.csv'; 
-let fileOutputName = 'out.json';
-const regex = /'/gi;
 
-/* GET home page. */
+
 router.get('/', function(req, res, next) {
   var relPath = path.join(__dirname, '..', 'external', 'EndPointController.exe');
   var cmd = exec(relPath + " > out.csv");
