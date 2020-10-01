@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
       }
       linesExceptFirst = data.split('\n').slice(1);
       linesExceptFirst = linesExceptFirst.toString().split(",")
-      console.log(linesExceptFirst);
   
   });
   })
